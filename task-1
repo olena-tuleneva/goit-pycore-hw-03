@@ -1,14 +1,19 @@
 from datetime import datetime
-today=datetime.now().date()
 
 def get_days_from_today(date: str) -> int:
     try:
+        today=datetime.now().date()
         input_date = datetime.strptime(date, "%Y-%m-%d").date()
         days_from_today = today - input_date
         return days_from_today.days
     except ValueError:
         raise ValueError("Incorrect format, please input date as YYYY-MM-DD ")
 
-print(get_days_from_today("2025-10-06"))
+user_input = input("Input date as YYYY-MM-DD: ")
+try:
+    days_from_today = get_days_from_today(user_input)
+    print(f"Days from today: {days_from_today}")
+except ValueError:
+    print("Incorrect format, please input date as YYYY-MM-DD ")
 
 
