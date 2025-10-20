@@ -3,7 +3,7 @@ from datetime import datetime
 # оголошення функції, яка приймає один параметр date — рядок, що представляє дату у форматі 'РРРР-ММ-ДД', та повертає ціле число 
 
 def get_days_from_today(date: str) -> int:
-
+    
 # обробка винятку:
     try:
         today=datetime.now().date() #поточна дата без часу

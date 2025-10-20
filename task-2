@@ -1,0 +1,16 @@
+
+import random
+
+#оголошення функції, яка генерує відсортований список унікальних випадкових чисел для лотереї
+def get_numbers_ticket(min: int, max: int, quantity: int) -> list:
+    
+    # перевірка коректності вхідних даних
+    if not (1 <= min <= max <= 1000):
+        return []
+    if not (0 < quantity <= (max - min + 1)):
+        return []
+    else:
+        numbers = random.sample(range(min, max + 1), quantity) # генерація унікальних випадкових чисел
+    return sorted(numbers) # повернення відсортованого списку 
+
+print(get_numbers_ticket(1, 49, 6)) # лотерея 6 із 49
