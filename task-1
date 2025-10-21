@@ -1,24 +1,20 @@
 from datetime import datetime
 
-# оголошення функції, яка приймає один параметр date — рядок, що представляє дату у форматі 'РРРР-ММ-ДД', та повертає ціле число 
+# створення функції, яка розраховує кількість днів між заданою датою і поточною датою
+# оголошення функції, яка приймає один параметр date - рядок та повертає ціле число - кількість днів
 
 def get_days_from_today(date: str) -> int:
     
-# обробка винятку:
+# обробка винятку - неправильного формату вхідних даних:
     try:
         today=datetime.now().date() #поточна дата без часу
         input_date = datetime.strptime(date, "%Y-%m-%d").date() #перетворення вхідного рядка у дату
         days_from_today = today - input_date # різниця в днях між поточною і введеною датами 
-        return days_from_today.days # функція повертає різницю 
-    except ValueError: # у разі помилки 
-        raise ValueError("Incorrect format, please input date as YYYY-MM-DD ")
+        return days_from_today.days # функція повертає різницю у днях між датами; якщо введена дата пізніша за поточну - від'ємне число
+    except ValueError: # у разі помилки введення даних
+        print("Incorrect format, please input date as YYYY-MM-DD ")
     
 # приклад використання функції
-user_input = input("Input date as YYYY-MM-DD: ")
-try:
-    days_from_today = get_days_from_today(user_input)
-    print(f"Days from today: {days_from_today}")
-except ValueError:
-    print("Incorrect format, please input date as YYYY-MM-DD ")
+print(get_days_from_today("2025-10-15"))
 
 
